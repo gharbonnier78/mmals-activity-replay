@@ -1,8 +1,8 @@
 # MMALS Route-Function Activity Replay
 
-[![GitHub Pages](https://img.shields.io/badge/live-GitHub%20Pages-2ea44f)](https://gharbonnier78.github.io/mmals-activity-replay/)
+[![GitHub Pages](https://img.shields.io/badge/live-GitHub%20Pages-2ea44f)](https://gharbonnier78.github.io/mmals-ml-wiki/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.1.1-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
 
 **Interactive browser-based replay and scientific-audit tool for MMALS route-function activity, specialization, drift, regime changes, mutualistic gain, and cost proxies.**
 
