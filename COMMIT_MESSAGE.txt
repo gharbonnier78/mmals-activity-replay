@@ -1,0 +1,7 @@
+release: publish MMALS Activity Replay v0.1.1 as a standalone GitHub Pages tool
+
+* add the self-contained route-function replay application as index.html
+* bundle MMALS v0.9 demonstration traces and the event-level CSV schema
+* add the complete user manual in PDF and LaTeX source form
+* document CSV contracts, privacy behavior, and scientific fidelity boundaries
+* add GitHub Pages deployment, citation metadata, MIT license, changelog, and examples
