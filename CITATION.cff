@@ -1,22 +1,19 @@
 cff-version: 1.2.0
-message: "If you use MMALS Activity Replay in research, please cite this software."
-title: "MMALS Route-Function Activity Replay"
+message: "If you use MMALS Activity Replay, please cite this software."
+title: "MMALS Activity Replay"
 type: software
+version: 0.2.0
+date-released: 2026-06-19
 authors:
   - family-names: Harbonnier
     given-names: Guillaume
-version: 0.1.1
-date-released: 2026-06-18
-license: MIT
 repository-code: "https://github.com/gharbonnier78/mmals-activity-replay"
 url: "https://gharbonnier78.github.io/mmals-activity-replay/"
-abstract: >-
-  Interactive browser-based observability, replay, and scientific-audit tool
-  for MMALS route-function activity, specialization, drift, regime-change
-  signals, mutualistic gain, and cost proxies.
+license: MIT
+abstract: "A browser-based replay and scientific-audit tool for versioned MMALS routes, functional drift, specialization, regime signals, gain, and cost proxies."
 keywords:
   - continual learning
-  - scientific visualization
-  - modular learning
-  - route-function memory
+  - routing
+  - scientific audit
+  - replay
   - MMALS

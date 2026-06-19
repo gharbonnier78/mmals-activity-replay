@@ -1,0 +1,14 @@
+{
+  "domain_id": "core",
+  "schema_version": "mmals-domain-pack-v1",
+  "label": "MMALS Core",
+  "description": "Generic MMALS replay vocabulary and panels.",
+  "required_fields": ["step", "route"],
+  "optional_metrics": ["accuracy", "loss", "dominance", "entropy", "route_drift", "latent_drift", "output_drift"],
+  "lenses": ["balanced", "performance", "stability", "ecology", "efficiency"],
+  "scientific_boundaries": [
+    "A visual lens changes emphasis only.",
+    "Interpolated checkpoints are not direct event observations.",
+    "Entropy is not physical carbon consumption."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "domain_id": "route-function",
+  "schema_version": "mmals-domain-pack-v1",
+  "label": "Route–Function Memory",
+  "description": "Replay route allocation and route/function drift for the MMALS v0.7–v0.9 evidence line.",
+  "required_fields": ["step", "route"],
+  "optional_metrics": ["route_drift", "latent_drift", "output_drift", "accuracy", "loss", "dominance", "entropy"],
+  "metric_aliases": {
+    "route_drift": ["route_drift", "route_drift_Dr"],
+    "latent_drift": ["latent_drift", "latent_drift_Dz"],
+    "output_drift": ["output_drift", "output_drift_Dy"]
+  },
+  "narrative": {
+    "headline": "Route identity is not sufficient to guarantee functional preservation.",
+    "warning": "A stable route can still compute a different function when host representations or fungal transformations drift."
+  }
+}

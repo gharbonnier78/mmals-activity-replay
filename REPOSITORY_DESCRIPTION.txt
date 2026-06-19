@@ -1,1 +1,1 @@
-Interactive browser-based replay and scientific-audit tool for MMALS route-function activity, specialization, drift, regime changes, mutualistic gain, and cost proxies.
+Extensible replay and scientific-audit player for versioned MMALS runs, with Replay Bundle manifests, domain packs, provenance, compact views, and legacy CSV compatibility.

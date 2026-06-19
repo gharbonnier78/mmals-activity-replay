@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gharbonnier78.github.io/mmals-activity-replay/schemas/replay-manifest.schema.json",
+  "title": "MMALS Replay Bundle v1 manifest",
+  "type": "object",
+  "required": ["schema_version", "bundle_profile", "run_id", "project", "experiment", "domain_pack", "source"],
+  "properties": {
+    "schema_version": {"const": "mmals-replay-bundle-v1"},
+    "bundle_profile": {"enum": ["full", "standard", "compact"]},
+    "run_id": {"type": "string", "minLength": 1},
+    "project": {"type": "string"},
+    "experiment": {"type": "string"},
+    "experiment_version": {"type": "string"},
+    "domain_pack": {"type": "string"},
+    "source": {
+      "type": "object",
+      "required": ["repository"],
+      "properties": {
+        "repository": {"type": "string"},
+        "commit": {"type": "string"},
+        "notebook": {"type": "string"}
+      }
+    },
+    "dataset": {"type": "object"},
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["role", "path", "format"],
+        "properties": {
+          "role": {"type": "string"},
+          "path": {"type": "string"},
+          "format": {"enum": ["csv", "json", "jsonl"]},
+          "required": {"type": "boolean"}
+        }
+      }
+    },
+    "provenance": {"type": "object"},
+    "checksums": {"type": "object"}
+  },
+  "additionalProperties": true
+}

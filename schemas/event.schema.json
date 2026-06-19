@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gharbonnier78.github.io/mmals-activity-replay/schemas/event.schema.json",
+  "title": "MMALS replay event",
+  "type": "object",
+  "required": ["step", "route"],
+  "properties": {
+    "step": {"type": "number"},
+    "activity": {"type": "string"},
+    "phase": {"type": "string"},
+    "event_type": {"type": "string"},
+    "model": {"type": "string"},
+    "seed": {"type": ["string", "number"]},
+    "task_id": {"type": ["string", "number"]},
+    "objective_id": {"type": "string"},
+    "route": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "number", "minimum": 0, "maximum": 1}
+    },
+    "metrics": {"type": "object", "additionalProperties": {"type": ["number", "null"]}},
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "route": {"enum": ["observed", "derived", "interpolated"]},
+        "metrics": {"enum": ["observed", "derived", "interpolated", "mixed"]},
+        "source_file": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": true
+}

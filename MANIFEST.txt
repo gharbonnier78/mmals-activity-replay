@@ -1,27 +1,38 @@
-.github/workflows/pages.yml
-.gitignore
-.nojekyll
-404.html
-CHANGELOG.md
-CITATION.cff
-COMMIT_MESSAGE.txt
-CONTRIBUTING.md
-LICENSE
-PUBLISHING.md
-README.md
-REPOSITORY_DESCRIPTION.txt
-data/demo/drift_df.csv
-data/demo/history_df.csv
-data/demo/losses_df.csv
-data/demo/model_diag.csv
-data/demo/routes_df.csv
-data/demo/scorecard.csv
-data/demo/task_forgetting_df.csv
-data/schemas/mmals_event_trace_schema.csv
-docs/MMALS_Activity_Replay_User_Manual_v0_1.pdf
-docs/MMALS_Activity_Replay_User_Manual_v0_1.tex
-docs/csv-contract.md
-docs/scientific-fidelity.md
-examples/README.md
-examples/minimal_route_trace.csv
-index.html
+MMALS Activity Replay v0.2.0 overlay
+
+UPDATED / REPLACED
+- index.html
+- README.md
+- CHANGELOG.md
+- CITATION.cff
+- CONTRIBUTING.md
+- PUBLISHING.md
+- .github/workflows/pages.yml
+
+ADDED
+- assets/app.js
+- assets/styles.css
+- embed/index.html
+- schemas/*.schema.json
+- domains/core/domain.json
+- domains/route-function/domain.json
+- bundles/route-function-v09-compat/*
+- examples/compact/replay.compact.json
+- examples/legacy_csv/minimal_route_trace.csv
+- tools/validate_bundle.py
+- tools/build_compact.py
+- tests/test_contract.py
+- docs/replay-bundle-v1.md
+- docs/domain-pack-contract.md
+- docs/scientific-fidelity.md
+- docs/migration-v0.1.1-to-v0.2.0.md
+- docs/release-checklist-v0.2.0.md
+
+PRESERVE FROM v0.1.1
+- LICENSE
+- .nojekyll
+- 404.html
+- data/demo/*.csv
+- data/schemas/mmals_event_trace_schema.csv (legacy reference)
+- docs/MMALS_Activity_Replay_User_Manual_v0_1.pdf
+- docs/MMALS_Activity_Replay_User_Manual_v0_1.tex

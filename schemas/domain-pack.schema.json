@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MMALS domain pack v1",
+  "type": "object",
+  "required": ["domain_id", "schema_version", "label"],
+  "properties": {
+    "domain_id": {"type": "string"},
+    "schema_version": {"const": "mmals-domain-pack-v1"},
+    "label": {"type": "string"},
+    "description": {"type": "string"},
+    "required_fields": {"type": "array", "items": {"type": "string"}},
+    "optional_metrics": {"type": "array", "items": {"type": "string"}},
+    "lenses": {"type": "array", "items": {"type": "string"}}
+  }
+}

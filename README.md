@@ -1,102 +1,126 @@
-# MMALS Route-Function Activity Replay
+# MMALS Activity Replay
 
-[![GitHub Pages](https://img.shields.io/badge/live-GitHub%20Pages-2ea44f)](https://gharbonnier78.github.io/mmals-activity-replay/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-2ea44f)](https://gharbonnier78.github.io/mmals-activity-replay/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.1.1-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](CHANGELOG.md)
 
-**Interactive browser-based replay and scientific-audit tool for MMALS route-function activity, specialization, drift, regime changes, mutualistic gain, and cost proxies.**
+Interactive browser-based replay and scientific-audit tool for MMALS route-function activity, specialization, drift, regime signals, mutualistic gain, and cost proxies.
+
+**v0.2.0 turns the original player into an extensible replay engine:** versioned Replay Bundle manifests, provenance and validation, domain-pack descriptors, legacy CSV compatibility, and synchronized full/compact views.
 
 ## Live application
 
-<https://gharbonnier78.github.io/mmals-activity-replay/>
+https://gharbonnier78.github.io/mmals-activity-replay/
 
-The application is a self-contained static page. It can replay bundled MMALS v0.9 evidence or parse compatible CSV files locally in the browser.
+The site is static. Selected local files remain in the browser and are not uploaded by the application.
 
-## What it shows
+## What v0.2.0 adds
 
-- training and inference/audit replay on a shared time axis;
-- an ecosystem graph of hosts, the mediating fungal system, heads, and memory exchanges;
-- route allocation on the natural probability-simplex geometry;
-- task loss, accuracy, dominance, entropy, mutualistic gain, and drift diagnostics;
-- forward and backward exchange cues;
-- A-to-B snapshot comparison;
-- objective lenses for performance, stability, ecology, efficiency, and balance;
-- clear labels distinguishing logged measurements, derived proxies, and interpolation.
+- **Replay Bundle v1** with a stable `run_manifest.json`;
+- `full`, `standard`, and `compact` bundle profiles;
+- hosted and local bundle loading;
+- portable compact JSON loading and export;
+- domain packs for generic core and route-function replay;
+- explicit run, code, dataset, and provenance cards;
+- structural validation report;
+- dependency-free command-line validator;
+- CI validation before GitHub Pages deployment;
+- compact/embed entry point;
+- continued local loading of legacy MMALS CSV exports.
+
+## Preserved from v0.1.1
+
+- training and inference/audit replay;
+- ecosystem graph separating hosts, fungal medium, heads, and memory;
+- route allocation using a documented projection of probability-simplex geometry;
+- synchronized loss, accuracy, specialization, entropy, gain, and drift traces;
+- A-to-B comparison;
+- visual objective lenses with an explicit non-causal warning;
+- scientific distinction between observed, derived, and interpolated values;
+- compatibility manifest for the public MMALS v0.9 CSV files under `data/demo/`.
 
 ## Quick start
 
-### Online
+### Existing v0.9 public evidence
 
-Open the [GitHub Pages application](https://gharbonnier78.github.io/mmals-activity-replay/).
+Open the application and select **Load v0.9 compatibility demo**. The v0.2 manifest binds the existing files in `data/demo/`; it does not modify or duplicate them.
 
-### Local
+### Compact example
 
-Open `index.html` in a modern browser. The embedded demo works without a web server. External web fonts may fall back to local system fonts when offline.
+Select **Load compact example**, or load:
 
-### Load private evidence
+```text
+examples/compact/replay.compact.json
+```
 
-Use **Load CSV files** in the application. Selected files are parsed locally and are not uploaded by this static site.
+### Legacy CSV
 
-## Documentation
+Select **Load legacy CSV** and choose one or more compatible files. A minimal example is provided at:
 
-- [User manual - PDF](docs/MMALS_Activity_Replay_User_Manual_v0_1.pdf)
-- [User manual - LaTeX source](docs/MMALS_Activity_Replay_User_Manual_v0_1.tex)
-- [CSV contract](docs/csv-contract.md)
-- [Scientific fidelity boundaries](docs/scientific-fidelity.md)
-- [Publishing instructions](PUBLISHING.md)
-- [Event-level trace schema](data/schemas/mmals_event_trace_schema.csv)
+```text
+examples/legacy_csv/minimal_route_trace.csv
+```
+
+### Replay Bundle files
+
+Select `run_manifest.json` and all files declared as required in the manifest. Files are matched by path or basename.
 
 ## Repository structure
 
 ```text
 .
-├── index.html                         # self-contained application
-├── data/
-│   ├── demo/                          # public MMALS v0.9 demonstration traces
-│   └── schemas/                       # future event-level trace contract
-├── docs/                              # manual and scientific documentation
-├── examples/                          # minimal loader examples
-├── .github/workflows/pages.yml        # GitHub Pages deployment
-├── CITATION.cff
-├── CHANGELOG.md
-├── LICENSE
-└── PUBLISHING.md
+├── index.html
+├── assets/                         # application JavaScript and CSS
+├── embed/                          # compact entry point
+├── bundles/                        # published run manifests
+├── domains/                        # domain-pack descriptors
+├── schemas/                        # Replay Bundle v1 JSON Schemas
+├── data/demo/                      # retained public MMALS v0.9 CSV evidence
+├── examples/                       # compact and legacy examples
+├── tools/                          # validation and compact-builder scripts
+├── tests/                          # dependency-free contract tests
+├── docs/                           # contracts, migration, fidelity, release checklist
+└── .github/workflows/pages.yml     # validation + GitHub Pages deployment
 ```
 
-## Data compatibility
+## Validation
 
-The current viewer detects common MMALS notebook exports by columns:
+```bash
+python tools/validate_bundle.py examples/compact/replay.compact.json --root .
+python -m unittest discover -s tests -v
+```
 
-- training: `task_id`, `epoch`, `task_loss`;
-- routing: `host_0`, `host_1`, ...;
-- retained-task history: `after_task`, `task_id`, `acc`;
-- drift: `route_drift`, `latent_drift`, `output_drift`;
-- alternate diagnostics: `route_drift_Dr`, `latent_drift_Dz`, `output_drift_Dy`.
+The compatibility manifest references existing `data/demo` files, so validate it after applying this overlay to the complete repository:
 
-The model identifier can be `model` or `method`.
+```bash
+python tools/validate_bundle.py bundles/route-function-v09-compat/run_manifest.json --root .
+```
 
 ## Scientific interpretation
 
-The route view is a simplex because route weights are nonnegative and sum to one. A torus is not imposed unless the underlying variables genuinely have periodic topology.
+- route weights are nonnegative and normalized;
+- the five-host display is a two-dimensional projection of the probability simplex;
+- interpolation between checkpoints is not direct observation;
+- routing entropy is not physical carbon consumption;
+- gain summaries are not automatically per-host causal contributions;
+- an uncalibrated change score is not a probability;
+- an objective lens changes emphasis only and does not create a counterfactual execution.
 
-The bundled v0.9 data has important limits:
+See [scientific fidelity boundaries](docs/scientific-fidelity.md).
 
-- training routes are checkpointed, so animation between checkpoints is interpolated;
-- routing entropy is a carbon-cost proxy, not physical CO2e;
-- logged gain summaries are not automatically per-host causal contributions;
-- the change ribbon is a proxy unless a calibrated detector probability is supplied;
-- objective lenses reframe observations but do not recompute counterfactual model behavior.
+## Documentation
 
-See [scientific fidelity boundaries](docs/scientific-fidelity.md) for the complete interpretation contract.
+- [Replay Bundle v1](docs/replay-bundle-v1.md)
+- [Domain-pack contract](docs/domain-pack-contract.md)
+- [Scientific fidelity](docs/scientific-fidelity.md)
+- [Migration from v0.1.1](docs/migration-v0.1.1-to-v0.2.0.md)
+- [Release checklist](docs/release-checklist-v0.2.0.md)
+- Existing user-manual PDF and LaTeX source remain in `docs/`.
 
-## GitHub Pages
+## Roadmap boundary
 
-The included workflow deploys the repository root after a push to `main`. After the first push, select **GitHub Actions** under **Settings -> Pages -> Build and deployment**.
-
-## Citation
-
-Citation metadata is provided in [`CITATION.cff`](CITATION.cff). GitHub will expose a **Cite this repository** control when the file is recognized.
+v0.2.0 provides the extensible core. It does **not** claim delivery of Goal-Adaptive Control, CAL, TPUT, Geometry G1, or RC2O domain packs. Those are later validated stages.
 
 ## License
 
-MIT License. See [LICENSE](LICENSE).
+MIT License.

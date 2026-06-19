@@ -1,23 +1,20 @@
 # Contributing
 
-Contributions are welcome when they preserve scientific traceability.
-
 ## Principles
 
-1. Do not relabel a proxy as a physical or calibrated measurement.
-2. Keep hosts, the fungal medium, and mycorrhizal exchange conceptually distinct.
-3. Preserve backward compatibility with documented CSV fields when practical.
-4. Add a small public example whenever a new trace field or view is introduced.
-5. Document whether a visualization is observational, derived, interpolated, or causal.
+1. Preserve scientific provenance: observed, derived, and interpolated values must remain distinguishable.
+2. Do not label a proxy as a physical measurement or calibrated probability.
+3. Keep the core player domain-neutral; domain-specific semantics belong in a domain pack.
+4. Maintain legacy CSV compatibility unless a deprecation is documented and tested.
+5. Keep GitHub Pages deployable without a backend.
 
-## Suggested workflow
+## Validation
+
+Run before opening a pull request:
 
 ```bash
-git checkout -b feature/short-name
-# edit and test
-git add .
-git commit -m "feat: describe the change"
-git push -u origin feature/short-name
+python tools/validate_bundle.py examples/compact/replay.compact.json --root .
+python -m unittest discover -s tests -v
 ```
 
-Open a pull request describing the scientific meaning of the change and the data fields used.
+For browser changes, test the compact example, v0.9 compatibility manifest, a local legacy CSV, the full/compact switch, playback, and A-to-B comparison.

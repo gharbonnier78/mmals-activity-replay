@@ -1,0 +1,37 @@
+{
+  "schema_version": "mmals-replay-bundle-v1",
+  "bundle_profile": "standard",
+  "run_id": "mmals-v09-public-csv-compat",
+  "project": "MMALS",
+  "experiment": "route_function_disentanglement",
+  "experiment_version": "v0.9",
+  "domain_pack": "route-function",
+  "source": {
+    "repository": "mmals-activity-replay",
+    "commit": "legacy-v0.1.1-public-data",
+    "notebook": "MMALS_Prototype_0_9_Route_Function_Disentanglement_Colab"
+  },
+  "dataset": {
+    "name": "FashionMNIST",
+    "protocol": "five sequential binary tasks; public exported evidence"
+  },
+  "available_lenses": ["balanced", "performance", "stability", "ecology", "efficiency"],
+  "provenance": {
+    "status": "observed-and-derived",
+    "note": "The original public CSV exports remain the source. Timeline interpolation, when used for display, is not direct observation."
+  },
+  "files": [
+    {"role": "routes", "path": "../../data/demo/routes_df.csv", "format": "csv", "required": true},
+    {"role": "losses", "path": "../../data/demo/losses_df.csv", "format": "csv", "required": false},
+    {"role": "history", "path": "../../data/demo/history_df.csv", "format": "csv", "required": false},
+    {"role": "drift", "path": "../../data/demo/drift_df.csv", "format": "csv", "required": false},
+    {"role": "diagnostics", "path": "../../data/demo/model_diag.csv", "format": "csv", "required": false},
+    {"role": "scorecard", "path": "../../data/demo/scorecard.csv", "format": "csv", "required": false},
+    {"role": "forgetting", "path": "../../data/demo/task_forgetting_df.csv", "format": "csv", "required": false}
+  ],
+  "scientific_boundaries": [
+    "Route checkpoints may be visually interpolated between logged points.",
+    "Routing entropy is a cost proxy, not physical CO2e.",
+    "Objective lenses do not recompute causal counterfactual behavior."
+  ]
+}

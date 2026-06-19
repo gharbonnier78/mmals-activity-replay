@@ -1,74 +1,21 @@
-# Publishing to GitHub Pages
+# Publishing MMALS Activity Replay v0.2.0
 
-Repository name:
-
-```text
-mmals-activity-replay
-```
-
-Expected public URL:
-
-```text
-https://gharbonnier78.github.io/mmals-activity-replay/
-```
-
-## 1. Create the repository
-
-Create a new **public** GitHub repository named `mmals-activity-replay`. Do not initialize it with another README, license, or `.gitignore`, because this package already contains them.
-
-## 2. Push this package
-
-From the directory containing this README:
+1. Apply the overlay to the existing repository root. Do not delete `data/demo/` or the existing manual files under `docs/`.
+2. Run:
 
 ```bash
-git init
-git branch -M main
-git add .
-git commit -F COMMIT_MESSAGE.txt
-git remote add origin https://github.com/gharbonnier78/mmals-activity-replay.git
-git push -u origin main
+python tools/validate_bundle.py examples/compact/replay.compact.json --root .
+python tools/validate_bundle.py bundles/route-function-v09-compat/run_manifest.json --root .
+python -m unittest discover -s tests -v
 ```
 
-## 3. Enable Pages
+3. Open the site using a local HTTP server because hosted manifests use `fetch`:
 
-In GitHub:
-
-```text
-Settings -> Pages -> Build and deployment -> Source -> GitHub Actions
+```bash
+python -m http.server 8000
 ```
 
-The included workflow `.github/workflows/pages.yml` deploys the repository root after pushes to `main`.
-
-## 4. Verify
-
-Open the repository's **Actions** tab and wait for `Deploy static site to GitHub Pages` to complete. Then open:
-
-```text
-https://gharbonnier78.github.io/mmals-activity-replay/
-```
-
-The user manual should be available at:
-
-```text
-https://gharbonnier78.github.io/mmals-activity-replay/docs/MMALS_Activity_Replay_User_Manual_v0_1.pdf
-```
-
-## 5. Suggested repository metadata
-
-**Description**
-
-```text
-Interactive browser-based replay and scientific-audit tool for MMALS route-function activity, specialization, drift, regime changes, mutualistic gain, and cost proxies.
-```
-
-**Topics**
-
-```text
-continual-learning, scientific-visualization, machine-learning, observability, explainable-ai, modular-learning, github-pages, mmals
-```
-
-**Website**
-
-```text
-https://gharbonnier78.github.io/mmals-activity-replay/
-```
+4. Verify `http://localhost:8000/` and the release checklist.
+5. Commit to the v0.2.0 development branch, push, review, then merge into `main`.
+6. GitHub Actions validates the contracts before deploying the repository root.
+7. Verify the public site before tagging `v0.2.0`.

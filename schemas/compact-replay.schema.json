@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://gharbonnier78.github.io/mmals-activity-replay/schemas/compact-replay.schema.json",
+  "title": "MMALS compact replay",
+  "type": "object",
+  "required": ["manifest", "events"],
+  "properties": {
+    "manifest": {"$ref": "replay-manifest.schema.json"},
+    "events": {"type": "array", "items": {"$ref": "event.schema.json"}}
+  }
+}

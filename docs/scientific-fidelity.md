@@ -1,27 +1,31 @@
-# Scientific Fidelity Boundaries
+# Scientific fidelity boundaries
 
-The viewer is an observability and audit instrument. It must make the status of each quantity visible.
+MMALS Activity Replay is an observability and audit interface. It does not convert incomplete telemetry into stronger evidence than the source run provides.
 
 ## Route geometry
 
-A route vector with nonnegative weights summing to one belongs to a probability simplex. The default geometric view therefore uses a simplex. A torus should be used only when the logged state contains independent periodic coordinates or when topology analysis supports that choice.
+Route coefficients are nonnegative and normalized to sum to one. The five-host visualization is a documented two-dimensional barycentric projection of a higher-dimensional probability simplex. It is not a claim that the complete route space is planar.
 
-## Carbon and energy
+## Checkpoint time
 
-Routing entropy is a historical MMALS carbon-tax proxy. It is not a physical carbon measurement. Physical claims require an explicit field such as `energy_j`, `energy_kwh`, or `co2e_g` measured with a documented method.
+A route observed at a checkpoint is marked `observed`. Any state drawn between checkpoints is `interpolated` and must not be interpreted as a directly logged optimizer event.
 
-## Phosphorus or mutualistic gain
+## Carbon and resource cost
 
-`gain_mean` and `gain_min` summarize logged mutualistic gain. They do not imply that a per-host causal contribution was measured. Per-host claims require interventions such as host ablation or route swaps.
+Routing entropy, active parameter count, latency, energy, and CO2e are distinct quantities. Entropy may be used as a communication or dispersion proxy but is not physical carbon consumption. Physical cost fields require measured or documented estimation procedures and units.
 
-## Regime change
+## Gain
 
-When no calibrated detector output is present, the viewer may display a clearly labeled change proxy derived from observed transitions. It must not be described as a probability.
+An aggregate gain field is not automatically a causal contribution for each host. Per-host causal claims require a declared intervention, such as removal or route ablation, with a documented comparison.
 
-## Route checkpoints
+## Regime
 
-The bundled v0.9 traces contain route checkpoints rather than every optimization step. Training animation between checkpoints is interpolation, not direct observation.
+A change score is not a probability unless it is produced and calibrated as one. The interface uses neutral wording when calibration is absent.
 
-## Objective lenses
+## Objective lens
 
-Changing a display lens changes how evidence is emphasized. It does not recompute the model's route, function, or specialization. Causal objective comparison requires separately logged runs or controlled interventions.
+A lens changes visual emphasis only. A causal statement that an objective changed the selected route requires separate logged executions or a logged goal vector and decision calculation.
+
+## Compact replay
+
+A compact replay is a selected summary. Its manifest must point back to the source run, and omitted detail must not be interpreted as evidence that no omitted event occurred.
